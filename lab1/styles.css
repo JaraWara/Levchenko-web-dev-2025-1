@@ -45,7 +45,7 @@ section { padding: 18px 0; }
 h2 { margin: 0 0 10px; font-size: 1.4rem; }
 
 /* === Таблица === */
-.table-curcuit { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+.table-circuit { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
 table { width: 100%; border-collapse: collapse; min-width: 560px; }
 caption { text-align: left; font-weight: 600; padding: 10px; }
 th, td { padding: 10px; border-top: 1px solid var(--border); text-align: left; }
@@ -59,3 +59,4 @@ footer {
   color: var(--muted); font-size: 0.95rem;
 
 }
+
