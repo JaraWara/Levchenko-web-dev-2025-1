@@ -1,0 +1,145 @@
+:root {
+  --brand: #13cc3b;
+  --text: #222;
+  --muted: #666;
+  --border: #e5e7eb;
+  --bg: #fff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+.container { width: min(960px, 92%); margin: 0 auto; } 
+
+
+/* === Шапка === */
+header {
+  border-bottom: 1px solid var(--border); /* линия снизу */
+  background: #fff;
+  position: sticky; top: 0;
+}
+.row { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; }
+.logo { font-weight: 600; text-decoration: none; color: var(--text); }
+nav a {
+  text-decoration: none; color: var(--text);
+  margin-left: 12px; padding: 6px 10px;
+}
+
+/* === Герой === */
+.hero { padding: 20px 0; display: grid; gap: 16px; grid-template-columns: 1.2fr 0.8fr; align-items: center; }
+.hero h1 { margin: 0 0 8px; font-size: clamp(1.6rem, 2.5vw + 1rem, 2.6rem); }
+.hero p { color: var(--muted); margin: 0 0 8px; }
+.button {
+  display: inline-block; padding: 10px 14px; background: var(--brand);
+  color: #fff; text-decoration: none; border-radius: 10px;
+}
+.hero img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: 12px; }
+
+/* === Разделы === */
+section { padding: 18px 0; }
+h2 { margin: 0 0 10px; font-size: 1.4rem; }
+
+/* === Таблица === */
+.table-circuit { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+table { width: 100%; border-collapse: collapse; min-width: 560px; }
+caption { text-align: left; font-weight: 600; padding: 10px; }
+th, td { padding: 10px; border-top: 1px solid var(--border); text-align: left; }
+thead th { background: #f8fafc; }
+tfoot td { font-weight: 600; }
+
+/* === Формы === */
+form { margin: 15px 0; padding: 15px; border: 1px solid var(--border); border-radius: 8px; background: #f9f9f9; }
+form label { display: block; margin: 10px 0; }
+form input:not([type="radio"]):not([type="checkbox"]), form select, form textarea, form button {
+  width: 100%;
+  max-width: 420px;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+form button:hover { background: #15803d; }
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;         /* отступ перед текстом */
+  vertical-align: middle;
+}
+
+.modal {
+  position: fixed;       /* всегда поверх страницы */
+  inset: 0;              /* растянуть на весь экран */
+  display: none;         /* скрыто по умолчанию */
+  z-index: 1000;         /* поверх всего контента */
+}
+
+.modal:target {
+  display: block;        /* показать модалку */
+}
+
+/* полупрозрачный фон (бэкдроп); клик по нему ведёт по href="#" и закрывает модалку */
+.modal__backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.55); /* тёмный фон */
+  display: block;
+}
+
+/* «диалог» по центру экрана */
+.modal__dialog {
+  position: relative;
+  width: 700px;              /* широкая для обратной связи */
+  margin: 60px auto;         /* центрирование по горизонтали + отступ сверху */
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* шапка модалки: заголовок + крестик */
+.modal__header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px;
+}
+.modal__close {
+  text-decoration: none; color: #999; font-size: 28px; line-height: 1;
+  padding: 0 8px; border-radius: 6px;
+}
+.modal__close:hover { background: #eee; }
+
+/* более узкая карточка для логина */
+.modal__dialog--narrow { width: 360px; }
+
+/* модалка логина с фоновым изображением на весь экран (требование задания) */
+.modal--login .modal__backdrop {
+  background: url("background.jpg") center/cover no-repeat;  /* добавь файл рядом со стилями/HTML */
+}
+
+/* чтобы поверх фоновой фотки всё ещё был лёгкий затемняющий слой — можно добавить: */
+.modal--login::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.25);
+  pointer-events: none; /* клики проходят сквозь */
+}
+
+:root:has(.modal:target) {
+  overflow: hidden;       /* блокируем скролл страницы за модалкой */
+}
+
+.modal__dialog {
+  max-height: calc(100vh - 120px);  /* окно не выше экрана минус отступы */
+  overflow: auto;                   /* колесо мыши прокручивает содержимое окна */
+}
+
+/* === Футер === */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 16px 0 28px; margin-top: 16px;
+  color: var(--muted); font-size: 0.95rem;
+}
