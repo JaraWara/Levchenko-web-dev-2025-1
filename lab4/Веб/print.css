@@ -1,0 +1,17 @@
+/* Убираем навигацию, кнопки и лишние элементы */
+nav, button {
+  display: none !important;
+}
+
+/* Оставляем только текст и картинки */
+body {
+  font-size: 14pt;
+  color: #000;
+  background: #fff;
+}
+
+.dish {
+  border: 1px solid #000;
+  box-shadow: none;
+  filter: none;
+}

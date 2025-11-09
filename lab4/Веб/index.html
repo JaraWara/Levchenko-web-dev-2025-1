@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>FreshLunch — доставка бизнес-ланчей</title>
+  <meta name="viewport" content="width=1200">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ШАПКА -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">FreshLunch</a>
+      <nav class="nav">
+        <a class="nav__link active" href="index.html">Главная</a>
+        <a class="nav__link" href="lunch.html">Собрать ланч</a>
+        <a class="btn btn--ghost" href="#feedback">Обратная связь</a>
+        <a class="btn btn--ghost" href="#login">Войти</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ОСНОВНОЕ -->
+  <main>
+    <section class="hero container">
+      <div class="hero__text">
+        <h1>Бизнес-ланчи без хлопот</h1>
+        <p>Горячие супы, полноценные вторые блюда и напитки каждый будний день.</p>
+        <a class="btn" href="lunch.html">Собрать ланч</a>
+      </div>
+      <figure class="hero__image">
+        <img src="images/index.jpg" alt="Набор бизнес-ланча: суп, горячее и салат">
+        <figcaption>Свежие продукты и продуманные порции.</figcaption>
+      </figure>
+    </section>
+
+    <section class="container">
+      <h2>О нас</h2>
+      <p>Компания FreshLunch занимается доставкой бизнес-ланчей по Москве. Мы работаем с 9:00 до 18:00 и привозим горячие блюда к вашему обеду.</p>
+    </section>
+
+
+    <section class="container">
+      <h2>Заказ (пример)</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Суп</th>
+              <th>Горячее</th>
+              <th>Напиток</th>
+              <th>Цена</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Борщ</td><td>Тефтели с пюре</td><td>Яблочный сок</td><td>390 ₽</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- ФУТЕР -->
+  <footer class="site-footer" id="contacts">
+    <div class="container footer-inner">
+      <div>
+        <h3>Контакты</h3>
+        <address>
+          Тел.: <a href="tel:+79990000000">+7 999 000-00-00</a><br>
+          Почта: <a href="mailto:hello@freshlunch.example">hello@freshlunch.example</a>
+        </address>
+      </div>
+      <div class="copyright">© FreshLunch</div>
+    </div>
+  </footer>
+
+  <!-- ===== МОДАЛЬНЫЕ ОКНА ===== -->
+
+  <!-- Обратная связь -->
+  <section id="feedback" class="modal">
+    <a class="modal__backdrop" href="#" aria-label="Закрыть"></a>
+    <div class="modal__dialog">
+      <div class="modal__header">
+        <h2>Обратная связь</h2>
+        <a class="modal__close" href="#" aria-label="Закрыть">×</a>
+      </div>
+
+      <form action="https://httpbin.org/post" method="post" enctype="multipart/form-data" class="form-box">
+        <label>ФИО
+          <input type="text" name="fio" required>
+        </label>
+
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+
+        <p class="label">Откуда узнали о нас</p>
+        <div class="radiogroup">
+          <label class="radio-inline"><input type="radio" name="source" value="internet">Интернет</label>
+          <label class="radio-inline"><input type="radio" name="source" value="friends">От друзей</label>
+          <label class="radio-inline"><input type="radio" name="source" value="ads">Реклама</label>
+        </div>
+
+        <label>Тип обращения
+          <select name="type">
+            <option value="complaint">Жалоба</option>
+            <option value="suggestion">Предложение</option>
+            <option value="other">Другое</option>
+          </select>
+        </label>
+
+        <label>Сообщение
+          <textarea name="message" rows="4"></textarea>
+        </label>
+
+        <label>Вложения
+          <input type="file" name="file">
+        </label>
+
+        <label class="checkbox-inline">
+          <input type="checkbox" name="agree" required>
+          Даю согласие на обработку персональных данных
+        </label>
+
+        <button type="submit" class="btn">Отправить</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Вход -->
+  <section id="login" class="modal modal--login">
+    <a class="modal__backdrop" href="#" aria-label="Закрыть"></a>
+    <div class="modal__dialog modal__dialog--narrow">
+      <div class="modal__header">
+        <h2>Вход</h2>
+        <a class="modal__close" href="#" aria-label="Закрыть">×</a>
+      </div>
+
+      <form action="https://httpbin.org/post" method="post" class="form-box">
+        <label>Логин
+          <input type="text" name="login" required>
+        </label>
+
+        <label>Пароль
+          <input type="password" name="password" required>
+        </label>
+
+        <label class="checkbox-inline">
+          <input type="checkbox" name="remember"> Запомнить меня
+        </label>
+
+        <button type="submit" class="btn">Войти</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>
