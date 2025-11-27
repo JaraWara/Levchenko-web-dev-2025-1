@@ -24,29 +24,101 @@
   <main class="container">
     <h1>Собрать ланч</h1>
 
-    <!-- Супы -->
+    <section class="combo">
+      <h2>Доступные для заказа комбо</h2>
+
+      <div class="combo-grid">
+
+          <div class="combo-item">
+              <div class="combo-dish"><img src="icons/soup.png"><span>Суп</span></div>
+              <div class="combo-dish"><img src="icons/main.png"><span>Главное блюдо</span></div>
+              <div class="combo-dish"><img src="icons/salad.png"><span>Салат</span></div>
+              <div class="combo-dish"><img src="icons/drink.png"><span>Напиток</span></div>
+          </div>
+
+          <div class="combo-item">
+              <div class="combo-dish"><img src="icons/soup.png"><span>Суп</span></div>
+              <div class="combo-dish"><img src="icons/main.png"><span>Главное блюдо</span></div>
+              <div class="combo-dish"><img src="icons/drink.png"><span>Напиток</span></div>
+          </div>
+
+          <div class="combo-item">
+              <div class="combo-dish"><img src="icons/soup.png"><span>Суп</span></div>
+              <div class="combo-dish"><img src="icons/salad.png"><span>Салат</span></div>
+              <div class="combo-dish"><img src="icons/drink.png"><span>Напиток</span></div>
+          </div>
+
+          <div class="combo-item">
+              <div class="combo-dish"><img src="icons/main.png"><span>Главное блюдо</span></div>
+              <div class="combo-dish"><img src="icons/salad.png"><span>Салат</span></div>
+              <div class="combo-dish"><img src="icons/drink.png"><span>Напиток</span></div>
+          </div>
+
+          <div class="combo-item">
+              <div class="combo-dish"><img src="icons/main.png"><span>Главное блюдо</span></div>
+              <div class="combo-dish"><img src="icons/drink.png"><span>Напиток</span></div>
+          </div>
+      </div>
+
+      <div class="dessert-info">
+          <img src="icons/dessert.png" class="dessert-img">
+          <p>Десерт можно добавить к любому заказу</p>
+      </div>
+    </section>
+
     <section class="container">
       <h2>Супы</h2>
+      <div class="filters" data-cat="soup">
+        <button type="button" class="filter-btn" data-cat="soup" data-kind="fish">рыбное</button>
+        <button type="button" class="filter-btn" data-cat="soup" data-kind="meat">мясное</button>
+        <button type="button" class="filter-btn" data-cat="soup" data-kind="veg">вегетарианское</button>
+      </div>
       <div class="dishes dishes-soup" id="soupsList"></div>
     </section>
 
-    <!-- Основные блюда -->
     <section class="container">
       <h2>Основные блюда</h2>
+      <div class="filters" data-cat="main">
+        <button type="button" class="filter-btn" data-cat="main" data-kind="fish">рыбное</button>
+        <button type="button" class="filter-btn" data-cat="main" data-kind="meat">мясное</button>
+        <button type="button" class="filter-btn" data-cat="main" data-kind="veg">вегетарианское</button>
+      </div>
       <div class="dishes dishes-main" id="mainsList"></div>
     </section>
 
-    <!-- Напитки -->
+   <section class="container">
+      <h2>Салаты/Стартеры</h2>
+      <div class="filters" data-cat="salad">
+        <button type="button" class="filter-btn" data-cat="salad" data-kind="fish">рыбное</button>
+        <button type="button" class="filter-btn" data-cat="salad" data-kind="meat">мясное</button>
+        <button type="button" class="filter-btn" data-cat="salad" data-kind="veg">вегетарианское</button>
+      </div>
+      <div class="dishes dishes-salad" id="saladsList"></div>
+    </section>
+
     <section class="container">
       <h2>Напитки</h2>
+      <div class="filters" data-cat="drink">
+        <button type="button" class="filter-btn" data-cat="drink" data-kind="cold">холодные</button>
+        <button type="button" class="filter-btn" data-cat="drink" data-kind="hot">горячие</button>
+      </div>
       <div class="dishes dishes-drink" id="drinksList"></div>
+    </section>
+
+    <section class="container">
+      <h2>Десерты</h2>
+      <div class="filters" data-cat="dessert">
+        <button type="button" class="filter-btn" data-cat="dessert" data-kind="small">маленькая порция</button>
+        <button type="button" class="filter-btn" data-cat="dessert" data-kind="medium">средняя порция</button>
+        <button type="button" class="filter-btn" data-cat="dessert" data-kind="large">большая порция</button>
+      </div>
+      <div class="dishes dishes-dessert" id="dessertsList"></div>
     </section>
 
         <section class="container order-section" id="order">
       <h2>Сделать заказ</h2>
 
       <div class="order-layout">
-        <!-- Левая колонка: Ваш заказ -->
         <div class="order-basket">
           <h3>Ваш заказ</h3>
 
@@ -61,8 +133,18 @@
           </div>
 
           <div class="order-line">
+            <div class="order-line__title">Салат/Стартер</div>
+            <div class="order-line__value" id="order-salad">Ничего не выбрано</div>
+          </div>
+
+          <div class="order-line">
             <div class="order-line__title">Напиток</div>
             <div class="order-line__value" id="order-drink">Ничего не выбрано</div>
+          </div>
+          
+          <div class="order-line">
+            <div class="order-line__title">Десерт</div>
+            <div class="order-line__value" id="order-dessert">Ничего не выбрано</div>
           </div>
 
           <div class="order-total" id="order-total-wrap" style="display:none">
@@ -70,13 +152,11 @@
             <div class="order-total__value" id="order-total">0₽</div>
           </div>
 
-          <!-- Комментарий -->
           <label class="label" for="order-comment">Комментарии к заказу</label>
           <textarea id="order-comment" name="comment" rows="4" style="max-width:520px"></textarea>
 
         </div>
 
-        <!-- Правая колонка: форма клиента -->
         <form class="order-form" action="https://httpbin.org/post" method="post" enctype="multipart/form-data">
           <h3 class="visually-hidden">Ваши данные</h3>
 
@@ -115,7 +195,9 @@
 
           <input type="hidden" name="soup"  id="inp-soup">
           <input type="hidden" name="main"  id="inp-main">
+          <input type="hidden" name="salad"  id="inp-salad">
           <input type="hidden" name="drink" id="inp-drink">
+          <input type="hidden" name="dessert"  id="inp-dessert">
 
           <div class="order-actions">
             <button type="reset" class="btn btn--ghost">Сбросить</button>
@@ -131,7 +213,6 @@
       <p>Позвонить нам: +7 (000) 000-00-00</p>
     </div>
   </footer>
-  <script src="dishes.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
