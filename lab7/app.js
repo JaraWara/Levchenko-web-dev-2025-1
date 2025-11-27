@@ -169,7 +169,7 @@ document.querySelector("form").addEventListener("submit", function(e){
     e.preventDefault();
 
     const soup = selected.soup;
-    const main = selected.main-course;
+    const main = selected.main;
     const salad = selected.salad;
     const drink = selected.drink;
     const dessert = selected.dessert;
