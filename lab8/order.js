@@ -72,11 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (response.ok) {
         alert('Заказ успешно оформлен!');
-
         localStorage.removeItem('order');
         window.location.href = 'index.html';
       } else {
-        alert('Ошибка при оформлении заказа.');
         console.error('Ошибка сервера:', result);
       }
     } catch (error) {

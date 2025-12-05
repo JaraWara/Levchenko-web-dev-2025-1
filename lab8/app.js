@@ -70,20 +70,15 @@ function renderCategory(cat) {
 }
 
 function selectDish(dish, catClass) {
-  selected[dish.category] = {
-    id: dish.id,
-    name: dish.name,
-    price: dish.price,
-    category: dish.category,
-    keyword: dish.keyword,
-    image: dish.image
-  };
+  selected[dish.category] = dish;
 
   localStorage.setItem('order', JSON.stringify(selected));
 
-  document.querySelectorAll(`.${catClass} .dish`).forEach(el => {
-    el.classList.toggle('selected', el.dataset.dish === dish.keyword);
-  });
+  document
+    .querySelectorAll(`.${catClass} .dish`)
+    .forEach(el => {
+      el.classList.toggle('selected', el.dataset.dish === dish.keyword);
+    });
 
   updateOrder();
 }
@@ -114,28 +109,16 @@ function updateOrder() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const savedOrder = localStorage.getItem('order');
-  if (savedOrder) {
-    const orderData = JSON.parse(savedOrder);
-    console.log("Загруженные данные из localStorage:", orderData);
-
-    const categories = ['soup', 'main', 'salad', 'drink', 'dessert'];
-
-    categories.forEach(category => {
-      const chosenDish = orderData[category];
-      if (chosenDish) {
-        const selectedDish = document.querySelector(`.dish[data-dish="${chosenDish.keyword}"]`);
-        if (selectedDish) {
-          selectedDish.classList.add('selected');
-        }
-      }
-    });
-  }
   
   try {
     await loadDishes();
 
     DISHES.sort((a, b) => a.name.localeCompare(b.name));
+
+    const savedOrder = JSON.parse(localStorage.getItem('order')) || {};
+    Object.keys(savedOrder).forEach(cat => {
+      selected[cat] = savedOrder[cat];
+    });
 
     renderCategory('soup',   'soup-list',   'soup-block');
     renderCategory('main',   'main-list',   'main-block');
