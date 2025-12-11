@@ -1,0 +1,239 @@
+.dishes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.dish {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+}
+
+.dish p {
+  margin: 2px 0; 
+}
+
+.dish__price {
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.dish button {
+  margin-top: 8px; 
+}
+
+.dish img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.dish button.btn {
+  align-self: start;
+}
+
+.dish.selected { 
+  border: 2px solid tomato;
+  transform: translateY(-4px);
+}
+
+.dish.selected .btn {
+  background: tomato;
+}
+
+.dish:hover {
+  border: 2px solid tomato;
+  transform: translateY(-4px);
+}
+.dish:hover .btn {
+  background: tomato;
+}
+
+.title {
+  font-size: 18px;
+}
+
+.weight {
+  color: gray;
+}
+
+button {
+  margin-top: auto;
+  background: #f1eee9;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.order-section h2 { text-align:center; margin-bottom: 24px; }
+
+.order-layout{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:48px;
+  align-items:start;
+}
+
+.order-basket h3 { margin:0 0 12px; }
+.order-line { margin: 18px 0; }
+.order-line__title{ font-weight:700; margin-bottom:6px; }
+.order-line__value{ line-height:1.4; }
+
+.order-total{ margin-top:16px; }
+.order-total__title{ font-weight:700; }
+.order-total__value{ font-size:1.6rem; margin-top:6px; }
+
+.form-hint{ color:#666; font-size:.95rem; margin:6px 0 14px; }
+.order-actions{ display:flex; gap:12px; margin-top:12px; }
+
+.order-basket textarea{ width:100%; }
+
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filter-btn {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #f5f7f9;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
+
+.combo {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.combo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.combo-item {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 22px rgba(0,0,0,0.06);
+}
+
+.combo-dish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.combo-dish img {
+    width: 48px;
+    transition: transform 0.25s ease;
+}
+
+.combo-item:hover img {
+    transform: translateY(-6px) scale(1.08);
+}
+
+.combo-dish span {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.dessert-info {
+    margin-top: 20px;
+    opacity: 0.7;
+}
+
+.dessert-img {
+    width: 50px;
+}
+
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.alert-box {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 300px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+.alert-btn {
+    margin-top: 20px;
+    background: #f6f6f6;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.alert-btn:hover {
+    background: black;
+    color: white;
+}
+
+.order-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .dishes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  h1, h2 {
+    text-align: center;
+  }
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  .dishes {
+    grid-template-columns: 1fr;
+  }
+  nav a {
+    font-size: 18px;
+  }
+}

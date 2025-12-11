@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset = "UTF-8">
+    <link rel = "stylesheet" href ="orders.css">
+    <link rel = "stylesheet" href ="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri&family=Jura:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Test</title>
+</head>
+<body>
+
+
+<header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">FreshLunch</a>
+      <nav class="nav">
+        <a class="nav__link" href="index.html">Главная</a>
+        <a class="nav__link" href="lunch.html">Собрать ланч</a>
+        <a class="nav__link" href="order.html">Оформить заказ</a>
+        <a class="nav__link active" href="orders.html">Заказы</a>
+      </nav>
+    </div>
+  </header>
+
+<main>
+
+    <section id="orders_info">
+        <h2 class="h2_dish">История заказов</h2>
+        <div class="container_orders">
+            <table class="orders_table">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Дата оформления</th>
+                        <th>Состав заказа</th>
+                        <th>Стоимость</th>
+                        <th>Время доставки</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody id="orders_tbody"></tbody>
+            </table>
+        </div>
+
+
+    </section>
+
+    <template id="order_info_template">
+        <tr>
+            <td data-appointment="number"></td>
+            <td data-appointment="date"></td>
+            <td class="order_info_compound", data-appointment="compound"></td>
+            <td data-appointment="price"></td>
+            <td data-appointment="time"></td>
+            <td>
+                <div class="order_actions">
+                    <button class="order_btn view" title="Просмотр">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <button class="order_btn edit" title="Редактировать">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="order_btn delete" title="Удалить">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </template>
+
+    <template id="order_modal_view">
+        <div class="order_modal_wrapper">
+            <div class="order_modal_window">
+
+            <div class="order_modal_header">
+                <h2>Просмотр заказа</h2>
+                <button class="order_modal_close">✕</button>
+            </div>
+
+            <div class="order_modal_block">
+
+                <div class="order_modal_row">
+                <p>Дата оформления</p>
+                <p data-date></p>
+                </div>
+
+                <h3>Доставка</h3>
+
+                <div class="order_modal_grid">
+
+                <div class="order_modal_col">
+                    <p>Имя получателя</p>
+                    <p>Адрес доставки</p>
+                    <p>Время доставки</p>
+                    <p>Телефон</p>
+                    <p>Email</p>
+                </div>
+
+                <div class="order_modal_col">
+                    <p data-name></p>
+                    <p data-address></p>
+                    <p data-time></p>
+                    <p data-phone></p>
+                    <p data-email></p>
+                </div>
+
+                </div>
+
+                <h3>Комментарий</h3>
+                <p class="order_modal_comment" data-comment></p>
+
+                <h3>Состав заказа</h3>
+
+                <div class="order_modal_grid">
+
+                <div class="order_modal_col">
+                    <p>Суп</p>
+                    <p>Главное блюдо</p>
+                    <p>Салат</p>
+                    <p>Напиток</p>
+                    <p>Десерт</p>
+                </div>
+
+                <div class="order_modal_col">
+                    <p data-soup></p>
+                    <p data-main></p>
+                    <p data-salad></p>
+                    <p data-drink></p>
+                    <p data-dessert></p>
+                </div>
+
+                </div>
+
+                <div class="order_modal_price">
+                Стоимость: <span data-price></span> ₽
+                </div>
+
+            </div>
+
+            <div class="order_modal_actions">
+                <button class="order_modal_ok">ОК</button>
+            </div>
+
+            </div>
+        </div>
+    </template>
+
+    <template id="order_modal_delete">
+    <div class="order_modal_wrapper">
+        <div class="order_modal_card">
+
+            <div class="order_modal_row">
+                <h2 class="order_modal_title">Удаление заказа</h2>
+                <button class="order_modal_close" type="button">&times;</button>
+            </div>
+
+            <p class="order_modal_subtitle">
+                Вы действительно хотите удалить этот заказ? Это действие нельзя отменить.
+            </p>
+
+            <div class="order_modal_row">
+                <div class="order_modal_col_left">
+                <p class="order_modal_label">Номер заказа</p>
+                <p class="order_modal_label">Дата оформления</p>
+                </div>
+
+                <div class="order_modal_col_right">
+                <p class="order_modal_value" data-order-id></p>
+                <p class="order_modal_value" data-date></p>
+                </div>
+            </div>
+
+            <div class="order_modal_actions">
+                <button class="order_modal_cancel" type="button">Отмена</button>
+                <button class="order_modal_delete_btn" type="button">Удалить</button>
+            </div>
+
+        </div>
+    </div>
+    </template>
+
+    <template id="order_modal_edit">
+        <div class="order_modal_wrapper">
+            <div class="order_modal_window">
+
+                <div class="order_modal_header">
+                    <h2>Редактирование заказа</h2>
+                    <button class="order_modal_close">✕</button>
+                </div>
+
+                <form class="order_edit_form">
+                    <div class="order_modal_row">
+                        <p>Дата оформления</p>
+                        <p data-date></p>
+                    </div>
+
+                    <h3>Доставка</h3>
+                    <label>
+                        Имя получателя:
+                        <input type="text" data-name>
+                    </label>
+                    <label>
+                        Адрес доставки:
+                        <input type="text" data-address>
+                    </label>
+                    <label>
+                        Телефон:
+                        <input type="tel" data-phone>
+                    </label>
+                    <label>
+                        Email:
+                        <input type="email" data-email>
+                    </label>
+                    <label>
+                        Комментарий:
+                        <textarea data-comment></textarea>
+                    </label>
+
+                    <h3>Тип доставки</h3>
+                    <label>
+                        <input type="radio" name="delivery_type" value="now"> Как можно скорее
+                    </label>
+                    <label>
+                        <input type="radio" name="delivery_type" value="by_time"> Ко времени
+                    </label>
+                    <label>
+                        Время доставки:
+                        <input type="time" data-time>
+                    </label>
+                </form>
+
+                <div class="order_modal_actions">
+                    <button class="order_modal_cancel">Отмена</button>
+                    <button class="order_modal_save">Сохранить</button>
+                </div>
+
+            </div>
+        </div>
+    </template>
+</main>
+
+<script src="orders.js"> </script>
+
+</body>
+</html>
