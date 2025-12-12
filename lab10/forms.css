@@ -1,0 +1,12 @@
+/*FORMS (общий стиль)*/
+form{margin:15px 0;padding:15px;border:1px solid var(--border);border-radius:8px;background:#f9f9f9}
+form label{display:block;margin:10px 0;font-weight:600}
+.label{margin:10px 0 6px}
+form input:not([type="radio"]):not([type="checkbox"]),
+form select, form textarea{
+  width:100%;max-width:520px;padding:8px;margin-top:4px;border:1px solid var(--border);border-radius:6px;
+  font:inherit
+}
+input[type="radio"], input[type="checkbox"]{width:auto;margin-right:8px;vertical-align:middle}
+.radiogroup{display:flex;flex-direction:column;gap:6px;margin:6px 0 12px}
+.radio-inline, .checkbox-inline{display:inline-flex;align-items:center;gap:8px}
