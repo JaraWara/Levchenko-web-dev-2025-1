@@ -76,9 +76,9 @@ async function additionOrders() {
             order.price += dish.price
             order.text = `${order.text}${order.text.length==0?"":","} ${dish.name}`
         }
-        if(order.desser_id){
-            dish = dishes.find(d => d.id === order.desser_id);
-            order.desser = dish;
+        if(order.dessert_id){
+            dish = dishes.find(d => d.id === order.dessert_id);
+            order.dessert = dish;
 
             order.price += dish.price
             order.text = `${order.text}${order.text.length==0?"":","} ${dish.name}`
