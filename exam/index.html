@@ -1,1 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Каталог</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="logo">MyShop</div>
 
+    <div class="controls">
+      <label>
+        Сортировка:
+        <select id="sort">
+          <option value="rating_desc">Рейтинг ↓</option>
+          <option value="rating_asc">Рейтинг ↑</option>
+          <option value="price_asc">Цена ↑</option>
+          <option value="price_desc">Цена ↓</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <aside class="filters">
+      <h2>Фильтры</h2>
+
+      <label>
+        Категория:
+        <select id="category">
+          <option value="">Все</option>
+        </select>
+      </label>
+
+      <label>
+        Цена от:
+        <input id="minPrice" type="number" min="0" placeholder="0" />
+      </label>
+
+      <label>
+        Цена до:
+        <input id="maxPrice" type="number" min="0" placeholder="99999" />
+      </label>
+
+      <label class="row">
+        <input id="discountOnly" type="checkbox" />
+        Только со скидкой
+      </label>
+
+      <button id="apply">Применить</button>
+      <button id="reset" class="secondary">Сбросить</button>
+
+      <div id="status" class="status"></div>
+    </aside>
+
+    <section>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2026 LevchenkoD</footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
